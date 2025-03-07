@@ -46,7 +46,7 @@ export const ResumeForm = () => {
           const Component = formTypeToComponent[form];
           return <Component key={form} />;
         })}
-        {/* <ThemeForm /> */}
+        <ThemeForm />
         <br />
       </section>
       <FlexboxSpacer maxWidth={50} className="hidden md:block" />

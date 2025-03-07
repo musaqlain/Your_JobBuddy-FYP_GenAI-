@@ -35,7 +35,7 @@ const ResumeControlBar = ({
 
   return (
     <div className="sticky bottom-0 left-0 right-0 flex h-[var(--resume-control-bar-height)] items-center justify-center px-[var(--resume-padding)] text-gray-600 lg:justify-between">
-      {/* <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <MagnifyingGlassIcon className="h-5 w-5" aria-hidden="true" />
         <input
           type="range"
@@ -58,7 +58,7 @@ const ResumeControlBar = ({
           />
           <span className="select-none">Autoscale</span>
         </label>
-      </div> */}
+      </div>
       <a
         className="ml-1 flex items-center gap-1 rounded-md border border-gray-300 px-3 py-0.5 hover:bg-gray-100 lg:ml-8"
         href={instance.url!}
