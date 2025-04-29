@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import logoSrc from "public/logo.svg";
+import logoSrc from "public/logo.png";
 import { cx } from "lib/cx";
 
 export const TopNavBar = () => {
@@ -32,8 +32,8 @@ export const TopNavBar = () => {
           className="flex items-center gap-2 text-sm font-medium"
         >
           {[
-            ["/resume-builder", "Builder"],
-            // ["/resume-parser", "Parser"],
+            ["/resume-builder", "Resume Builder"],
+            ["/tech-interview/tech-interview", "Mock Interview"],
           ].map(([href, text]) => (
             <Link
               key={text}
