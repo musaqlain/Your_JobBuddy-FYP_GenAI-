@@ -1,14 +1,18 @@
-import type { FormValues } from '@@types/form';
+// import type { FormValues } from '@@types/form';
 import instance from '@api';
 import { mapSearchParamToValue, generatePrompt } from './completion.utils';
 
-interface CompletionApiProps extends Omit<FormValues, 'editedTranscript'> {
+// interface CompletionApiProps extends Omit<FormValues, 'editedTranscript'> {
+//   searchParams: URLSearchParams;
+// }
+interface CompletionApiProps {
   searchParams: URLSearchParams;
-}
+  question: string;
+  transcript: string;
+ }
 
 const fetchOpenAICompletion = async ({
   searchParams,
-  apiKey,
   question,
   transcript,
 }: CompletionApiProps) => {
@@ -26,7 +30,8 @@ const fetchOpenAICompletion = async ({
   };
   const config = {
     headers: {
-      Authorization: `Bearer ${apiKey}`,
+      // Authorization: `Bearer ${apiKey}`,
+      Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
     },
   };
 
