@@ -1,52 +1,50 @@
-import instance from '@api';
+import type { FormValues } from '@@types/form';
 import { mapSearchParamToValue, generatePrompt } from './completion.utils';
 
-interface CompletionApiProps {
+interface CompletionApiProps extends Omit<FormValues, 'editedTranscript'> {
   searchParams: URLSearchParams;
-  question: string;
-  transcript: string;
 }
 
-const fetchOpenRouterCompletion = async ({
+const fetchGroqCompletion = async ({
   searchParams,
   question,
   transcript,
 }: CompletionApiProps) => {
   const { field, experience, lang } = mapSearchParamToValue(searchParams);
-
   const prompt = generatePrompt(field, experience, lang, question, transcript);
 
-  const options = {
-    model: 'deepseek/deepseek-v3-base:free', // DeepSeek-R1 model name as per OpenRouter
-    messages: [
-      {
-        role: 'user',
-        content: prompt,
-      },
-    ],
-  };
+  const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+  const VITE_GROQ_API_KEY = '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'; // Ensure this is set in your environment variables
 
-  const config = {
+  const response = await fetch(GROQ_API_URL, {
+    method: 'POST',
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+      Authorization: `Bearer ${VITE_GROQ_API_KEY}`,
       'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://localhost:3000', // REQUIRED — use your real domain or localhost for testing
-      'X-Title': 'fyp app', // Optional but helpful
     },
-  };
+    body: JSON.stringify({
+      model: 'llama3-70b-8192', // Choose the model that fits your needs
+      messages: [
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
+      max_tokens: 512,
+      temperature: 0.7,
+    }),
+  });
 
-  const { data } = await instance.post(
-    'https://openrouter.ai/api/v1/chat/completions',
-    options,
-    config
-  );
+  if (!response.ok) {
+    throw new Error(`Groq API error: ${response.statusText}`);
+  }
 
-  const response = data.choices?.[0]?.message?.content?.trim();
+  const data = await response.json();
 
   return {
-    id: data.id,
-    response,
+    id: Date.now(),
+    response: data?.choices?.[0]?.message?.content?.trim() ?? 'No response received',
   };
 };
 
-export default fetchOpenRouterCompletion;
+export default fetchGroqCompletion;

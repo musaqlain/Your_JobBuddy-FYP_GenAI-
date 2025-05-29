@@ -42,7 +42,10 @@ const useForm = (retryQuestionCallback?: VoidFunction) => {
       // if (!apiKey) throw new Error('Please provide your OpenAI API Key.');
       handleValidateForm();
       dispatch({ type: 'API/FETCH_START' });
-      const { id, response } = await fetchOpenAICompletion({ searchParams, question, transcript });
+      var { id, response } = await fetchOpenAICompletion({ searchParams, question, transcript });
+      console.log('id', id);
+      id = `gen-${id}`
+
       dispatch({ type: 'API/FETCH_SUCCESS', payload: response });
       saveSession({ id, question, transcript, search, response: response });
     } catch (err) {
