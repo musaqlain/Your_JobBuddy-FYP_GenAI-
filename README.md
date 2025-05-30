@@ -1,5 +1,33 @@
 # Your JobBuddy – GenAI-Powered Job Preparation Assistant
 
+<table>
+    <tbody>
+        <tr>
+          <td align="center">
+                <a href="https://github.com/MohSaqlainn/">
+                    <img src="https://avatars.githubusercontent.com/u/77551019?v=4" width="138px;" alt="Moh Saqlain"/>
+                    <br />
+                    <sub><b>Moh Saqlain</b></sub>
+                </a> 
+            </td>
+            <td align="center">
+                <a href="https://github.com/MohSaqlainn/">
+                    <img src="https:///u/77551019?v=4" width="138px;" alt="Moh Saqlain"/>
+                    <br />
+                    <sub><b>Abdul Rehman</b></sub>
+                </a> 
+            </td>
+            <td align="center">
+                <a href="https://github.com/Ash2068">
+                    <img src="https:///u/146135649?v=4" width="138px;" alt="Ashlyn Hall"/>
+                    <br />
+                    <sub><b>Areeba Raees</b></sub>
+                </a> 
+            </td>
+        </tr> 
+</tbody>
+<table>
+
 Your JobBuddy is an AI-powered web application that helps job seekers **practice technical interviews** and **create professional resumes**. Built as a Final Year Project, it combines speech-to-text AI, GenAI feedback, and resume generation tools to boost confidence and readiness for real-world job applications.
 
 ## 🚀 Features
