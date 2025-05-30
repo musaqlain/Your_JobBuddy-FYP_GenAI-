@@ -3,6 +3,7 @@ import { getHasUsedAppBefore } from "lib/redux/local-storage";
 import { ResumeDropzone } from "components/ResumeDropzone";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 export default function ImportResume() {
   const [hasUsedAppBefore, setHasUsedAppBefore] = useState(false);
@@ -10,9 +11,17 @@ export default function ImportResume() {
   const onFileUrlChange = (fileUrl: string) => {
     setHasAddedResume(Boolean(fileUrl));
   };
+  const router = useRouter();
 
   useEffect(() => {
     setHasUsedAppBefore(getHasUsedAppBefore());
+    const token = localStorage.getItem('token');
+    console.log('Token:', token);
+    // Check if the user is logged in by checking for a token
+    if (!token) {
+      // Not logged in → redirect to login with return URL
+      router.push(`/auth/login?redirect=${encodeURIComponent('/resume-builder')}`);
+    }
   }, []);
 
   return (
