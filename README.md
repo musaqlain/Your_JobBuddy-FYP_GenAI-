@@ -12,14 +12,14 @@
             </td>
             <td align="center">
                 <a href="https://github.com/MohSaqlainn/">
-                    <img src="https:///u/77551019?v=4" width="138px;" alt="Moh Saqlain"/>
+                    <img src="https:///u/77551019?v=4" width="138px;" />
                     <br />
                     <sub><b>Abdul Rehman</b></sub>
                 </a> 
             </td>
             <td align="center">
                 <a href="https://github.com/Ash2068">
-                    <img src="https:///u/146135649?v=4" width="138px;" alt="Ashlyn Hall"/>
+                    <img src="https:///u/146135649?v=4" width="138px;" />
                     <br />
                     <sub><b>Areeba Raees</b></sub>
                 </a> 
